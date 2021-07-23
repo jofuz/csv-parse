@@ -23,6 +23,8 @@ def parse_files(csvFile, jsonFile):
 
   with open(jsonFile, 'w', encoding='utf-8') as jsonf:
     jsonf.write(json.dumps(data, indent=2))
+
+    # getting access errors when posting
     r = requests.post(url, data=jsonf, headers=headers)
     print(r, r.text)
 
