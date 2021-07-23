@@ -8,13 +8,17 @@ def parse_files(csvFile, jsonFile):
   headers = {
       "content-type": "application/json; charset=UTF-8",
   }
+
+  # empty array to store json
   data = {}
 
   with open(csvFile) as csvf:
     csvReader = csv.DictReader(csvf)
 
+    # key = ID ROW OF CSV
     for rows in csvReader:
       key = rows['ID']
+      # populate data array
       data[key] = rows
 
   with open(jsonFile, 'w', encoding='utf-8') as jsonf:
@@ -23,6 +27,6 @@ def parse_files(csvFile, jsonFile):
     print(r, r.text)
 
 
-csvFile = r'data.csv'
+csvFile = r'input_data.csv'
 jsonFile = r'data.json'
 parse_files(csvFile, jsonFile)
